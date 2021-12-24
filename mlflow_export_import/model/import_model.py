@@ -46,7 +46,7 @@ class ModelImporter():
 
         mlflow.set_experiment(experiment_name)
         print("Importing latest versions:")
-        for vr in dct["latest_versions"]:
+        for vr in reversed(list(dct["latest_versions"])):
             run_id = self.import_run(input_dir, experiment_name, vr)
             self.import_version(model_name, vr, run_id, sleep_time)
         if verbose:

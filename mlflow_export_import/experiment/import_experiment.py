@@ -33,7 +33,7 @@ class ExperimentImporter():
         failed_run_ids = dct['failed_run_ids']
         print(f"Importing {len(run_ids)} runs into experiment '{exp_name}' from {exp_dir}")
         run_ids_mapping = {}
-        for src_run_id in run_ids:
+        for src_run_id in reversed(list(run_ids)):
             dst_run_id, src_parent_run_id = self.run_importer.import_run(exp_name, os.path.join(exp_dir,src_run_id))
             run_ids_mapping[src_run_id] = (dst_run_id,src_parent_run_id)
         print(f"Imported {len(run_ids)} runs into experiment '{exp_name}' from {exp_dir}")
